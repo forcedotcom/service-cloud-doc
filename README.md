@@ -1,2 +1,2 @@
-# service-cloud-doc
+# Service Cloud Documentation Code Samples
 Code samples for Service Cloud documentation
