@@ -1,7 +1,7 @@
 <html>
 
   <head>
-    <title>DEFAULT PAGE</title>
+    <title>CHAT PAGE</title>
     <!--    <meta name="viewport" content="width=device-width, initial-scale=1,
     imum-scale=1, maximum-scale=1, user-scalable=0"> -->
   </head>
@@ -18,7 +18,7 @@
     }
     </style>
 
-    <!-- <script type='text/javascript' src='https://service.force.com/embeddedservice/5.0/esw.js'></script> -->
+    <script type='text/javascript' src='https://service.force.com/embeddedservice/5.0/esw.js'></script>
     <script type='text/javascript'>
       // On page load set the correct size of the iframe to account for either CWAE/Contact Us or Session Continuity.
       function helpButtonLoaded() {
@@ -51,13 +51,15 @@
           gslbBaseURL,
           '00Dxx0000001gEW',
           'omni_1', {
-          baseLiveAgentContentURL: 'path/to/baseLiveAgentContentURL',
-          deploymentId: '572xx0000000001',
-          buttonId: '573xx0000000001',
-          baseLiveAgentURL: 'path/to/baseLiveAgentURL',
-          eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04IRM0000004Dv12AE_16c4e028e49',
-          isOfflineSupportEnabled: true
-        });
+            baseLiveAgentContentURL: 'path/to/baseLiveAgentContentURL',
+            deploymentId: '572xx0000000001',
+            buttonId: '573xx0000000001',
+            baseLiveAgentURL: 'path/to/baseLiveAgentURL',
+            eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04IRM0000004Dv12AE_16c4e028e49',
+            isOfflineSupportEnabled: true
+          }
+        );
+
         embedded_svc.addEventHandler("afterMinimize", function() {
           var sidebar = document.querySelector('.embeddedServiceSidebarMinimizedDefaultUI');
           var height = sidebar.clientHeight;
@@ -86,7 +88,7 @@
             frameWidth: width
           }, '*');
         });
-      }
+      };
 
       if (!window.embedded_svc) {
         var s = document.createElement('script');
