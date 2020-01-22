@@ -1,0 +1,104 @@
+<html>
+
+  <head>
+    <title>DEFAULT PAGE</title>
+    <!--    <meta name="viewport" content="width=device-width, initial-scale=1,
+    imum-scale=1, maximum-scale=1, user-scalable=0"> -->
+  </head>
+
+  <body>
+    <style type='text/css'>
+      .embeddedServiceHelpButton .helpButton .uiButton {
+        background-color: #005290;
+        font-family: "Arial", sans-serif;
+      }
+
+    .embeddedServiceHelpButton .helpButton .uiButton:focus {
+      outline: 1px solid #005290;
+    }
+    </style>
+
+    <!-- <script type='text/javascript' src='https://service.force.com/embeddedservice/5.0/esw.js'></script> -->
+    <script type='text/javascript'>
+      // On page load set the correct size of the iframe to account for either CWAE/Contact Us or Session Continuity.
+      function helpButtonLoaded() {
+        var helpButton = document.querySelector('.helpButton');
+        if (!helpButton) {
+          window.setTimeout(helpButtonLoaded, 500);
+          return;
+        }
+        var height = helpButton.clientHeight;
+        var width = helpButton.clientWidth;
+        window.parent.postMessage({
+                                  frameHeight: height,
+                                  frameWidth: width
+                                  }, '*'); // Used a * but for security reasons you can plug in the domain name.
+      }
+      window.onload = helpButtonLoaded();
+
+      var initESW = function(gslbBaseURL) {
+        embedded_svc.settings.displayHelpButton = true; // Or false
+        embedded_svc.settings.language = 'en-US'; // For example, enter 'en' or 'en-US'
+        embedded_svc.settings.devMode = true;
+        // Have set the widget height and width as a property on the object
+        embedded_svc.settings.widgetWidth = 320;
+        embedded_svc.settings.widgetHeight = 498;
+        embedded_svc.settings.enabledFeatures = ['LiveAgent'];
+        embedded_svc.settings.entryFeature = 'LiveAgent';
+        embedded_svc.init(
+          'http://localhost.internal.salesforce.com:6109',
+          'http://localhost.force.com:6109/test1',
+          gslbBaseURL,
+          '00Dxx0000001gEW',
+          'omni_1', {
+          baseLiveAgentContentURL: 'path/to/baseLiveAgentContentURL',
+          deploymentId: '572xx0000000001',
+          buttonId: '573xx0000000001',
+          baseLiveAgentURL: 'path/to/baseLiveAgentURL',
+          eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04IRM0000004Dv12AE_16c4e028e49',
+          isOfflineSupportEnabled: true
+        });
+        embedded_svc.addEventHandler("afterMinimize", function() {
+          var sidebar = document.querySelector('.embeddedServiceSidebarMinimizedDefaultUI');
+          var height = sidebar.clientHeight;
+          var width = sidebar.clientWidth;
+          window.parent.postMessage({
+            frameHeight: height,
+            frameWidth: width
+           }, '*');
+        });
+
+        embedded_svc.addEventHandler("afterMaximize", function() {
+          var container = document.querySelector('.dockableContainer');
+          var height = container.clientHeight;
+          var width = container.clientWidth;
+          window.parent.postMessage({
+            frameHeight: embedded_svc.settings.widgetHeight,
+            frameWidth: embedded_svc.settings.widgetWidth
+          }, '*');
+        });
+
+        embedded_svc.addEventHandler("afterDestroy", function() {
+          var height = document.querySelector('.helpButton').clientHeight;
+          var width = document.querySelector('.helpButton').clientWidth;
+          window.parent.postMessage({
+            frameHeight: height,
+            frameWidth: width
+          }, '*');
+        });
+      }
+
+      if (!window.embedded_svc) {
+        var s = document.createElement('script');
+        s.setAttribute('src', '<yourcoreurl>/embeddedservice/5.0/esw.js');
+        s.onload = function() {
+          initESW(null);
+        };
+        document.body.appendChild(s);
+      } else {
+        initESW('<yourcoreurl>/to/esw.js');
+      }
+
+    </script>
+  </body>
+</html>
