@@ -1,5 +1,5 @@
 
-## Service Cloud Voice Contact Flows
+# Service Cloud Voice Contact Flows
 
 Use these contact flows to perform common functions when using Service Cloud Voice.
 
