@@ -29,6 +29,32 @@
       }
     },
     {
+       "id":"52e05d05-39db-4dc2-a37c-0678b693b466",
+       "type":"SetRecordingBehavior",
+       "branches":[
+          {
+             "condition":"Success",
+             "transition":"b8c6d167-dfd1-4ee2-b160-408e1690249a"
+          }
+       ],
+       "parameters":[
+          {
+             "name":"RecordingBehaviorOption",
+             "value":"Enable"
+          },
+          {
+             "name":"RecordingParticipantOption",
+             "value":"Both"
+          }
+       ],
+       "metadata":{
+             "position":{
+             "x":29,
+             "y":378.5
+          }
+       }
+    },
+    {
       "id": "b5918c25-c699-47a0-a348-9fd7cd756dae",
       "type": "PlayPrompt",
       "branches": [
@@ -144,7 +170,7 @@
       "branches": [
         {
           "condition": "Success",
-          "transition": "b8c6d167-dfd1-4ee2-b160-408e1690249a"
+          "transition": "52e05d05-39db-4dc2-a37c-0678b693b466"
         }
       ],
       "parameters": [
