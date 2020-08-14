@@ -1,7 +1,9 @@
 
 # Service Cloud Voice Contact Flows
 
-Use these contact flows to perform common functions when using Service Cloud Voice. For more information about Voice, see [Service Cloud Voice in Salesforce Help](https://help.salesforce.com/articleView?id=voice_about.htm&type=5).
+Use these contact flows to perform common functions when using Service Cloud Voice.
+
+To learn about Voice, see [Service Cloud Voice in Salesforce Help](https://help.salesforce.com/articleView?id=voice_about.htm&type=5). Also refer to the [Voice Developer Guide](https://developer.salesforce.com/docs/atlas.en-us.voice_developer_guide.meta/voice_developer_guide/voice_intro.htm).
 
 ## Basic Flows
 
