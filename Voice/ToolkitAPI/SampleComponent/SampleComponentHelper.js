@@ -1,6 +1,9 @@
 ({
     subscribeToVoiceToolkit: function(cmp) {
         cmp._telephonyEventListener = $A.getCallback(this.telephonyEventListener.bind(this, cmp));
+        // Subscribing to a subset of the telephony events
+        // For a list of all events, see the Voice Developer Guide:
+        // https://developer.salesforce.com/docs/atlas.en-us.voice_developer_guide.meta/voice_developer_guide/voice_intro.htm
         cmp.find('voiceToolkitApi').addTelephonyEventListener('CALL_CONNECTED', cmp._telephonyEventListener);
         cmp.find('voiceToolkitApi').addTelephonyEventListener('CALL_ENDED', cmp._telephonyEventListener);
         cmp.find('voiceToolkitApi').addTelephonyEventListener('MUTE', cmp._telephonyEventListener);
