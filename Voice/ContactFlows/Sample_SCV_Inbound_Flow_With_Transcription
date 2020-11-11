@@ -195,62 +195,6 @@
             }
         },
         {
-            "id": "cb648498-0b69-4bb7-b804-1f796c3d5b90",
-            "type": "SetAttributes",
-            "branches": [
-                {
-                    "condition": "Success",
-                    "transition": "7b05d5eb-140c-4abc-aefc-3f01dc220e71"
-                },
-                {
-                    "condition": "Error",
-                    "transition": "918bce19-adbf-43ba-9c13-f9d6d14af047"
-                }
-            ],
-            "parameters": [
-                {
-                    "name": "Attribute",
-                    "value": "voiceCallId",
-                    "key": "voiceCallId",
-                    "namespace": "External"
-                }
-            ],
-            "metadata": {
-                "position": {
-                    "x": 861,
-                    "y": 170
-                }
-            }
-        },
-        {
-            "id": "918bce19-adbf-43ba-9c13-f9d6d14af047",
-            "type": "PlayPrompt",
-            "branches": [
-                {
-                    "condition": "Success",
-                    "transition": "297861e7-f675-4a81-8f49-8873b469f5a1"
-                }
-            ],
-            "parameters": [
-                {
-                    "name": "Text",
-                    "value": "Some error occurred in executing Lambda. No voice call record created. Callback again.",
-                    "namespace": null
-                },
-                {
-                    "name": "TextToSpeechType",
-                    "value": "text"
-                }
-            ],
-            "metadata": {
-                "position": {
-                    "x": 378,
-                    "y": 597
-                },
-                "useDynamic": false
-            }
-        },
-        {
             "id": "a36f4066-a2a9-4c0e-8047-9cdb428ea4e9",
             "type": "SetQueue",
             "branches": [
@@ -348,6 +292,126 @@
             }
         },
         {
+            "id": "1c8f470a-17f9-4fb0-8922-931d8e57bfd6",
+            "type": "SetAttributes",
+            "branches": [
+                {
+                    "condition": "Success",
+                    "transition": "86ec3a71-fa97-4cb0-b03f-18249ad189cb"
+                },
+                {
+                    "condition": "Error",
+                    "transition": "35e4005e-ed2a-49eb-8960-c1ce7cbe611c"
+                }
+            ],
+            "parameters": [
+                {
+                    "name": "Attribute",
+                    "value": "en-US",
+                    "key": "languageCode",
+                    "namespace": null
+                }
+            ],
+            "metadata": {
+                "position": {
+                    "x": 248,
+                    "y": 154
+                }
+            }
+        },
+        {
+            "id": "cb648498-0b69-4bb7-b804-1f796c3d5b90",
+            "type": "SetAttributes",
+            "branches": [
+                {
+                    "condition": "Success",
+                    "transition": "7b05d5eb-140c-4abc-aefc-3f01dc220e71"
+                },
+                {
+                    "condition": "Error",
+                    "transition": "918bce19-adbf-43ba-9c13-f9d6d14af047"
+                }
+            ],
+            "parameters": [
+                {
+                    "name": "Attribute",
+                    "value": "voiceCallId",
+                    "key": "voiceCallId",
+                    "namespace": "External"
+                }
+            ],
+            "metadata": {
+                "position": {
+                    "x": 861,
+                    "y": 170
+                }
+            }
+        },
+        {
+            "id": "918bce19-adbf-43ba-9c13-f9d6d14af047",
+            "type": "PlayPrompt",
+            "branches": [
+                {
+                    "condition": "Success",
+                    "transition": "cb648498-0b69-4bb7-b804-1f796c3d5b90"
+                }
+            ],
+            "parameters": [
+                {
+                    "name": "Text",
+                    "value": "Some error occurred in executing Lambda. No voice call record created. Callback again.",
+                    "namespace": null
+                },
+                {
+                    "name": "TextToSpeechType",
+                    "value": "text"
+                }
+            ],
+            "metadata": {
+                "position": {
+                    "x": 378,
+                    "y": 597
+                },
+                "useDynamic": false
+            }
+        },
+        {
+            "id": "86ec3a71-fa97-4cb0-b03f-18249ad189cb",
+            "type": "StartMediaStreaming",
+            "branches": [
+                {
+                    "condition": "Success",
+                    "transition": "af89b7be-14c3-40e7-a9ab-643748abe7ec"
+                },
+                {
+                    "condition": "Error",
+                    "transition": "af89b7be-14c3-40e7-a9ab-643748abe7ec"
+                }
+            ],
+            "parameters": [
+                {
+                    "name": "Track",
+                    "value": "FromCustomer"
+                },
+                {
+                    "name": "Track",
+                    "value": "ToCustomer"
+                },
+                {
+                    "name": "MediaStreamTypes",
+                    "value": "Audio"
+                }
+            ],
+            "metadata": {
+                "position": {
+                    "x": 451,
+                    "y": 15
+                },
+                "fromCustomer": true,
+                "toCustomer": true
+            }
+        },
+        {
             "id": "af89b7be-14c3-40e7-a9ab-643748abe7ec",
             "type": "InvokeExternalResource",
             "branches": [
@@ -388,70 +452,6 @@
                 "useDynamic": false
             },
             "target": "Lambda"
-        },
-        {
-            "id": "1c8f470a-17f9-4fb0-8922-931d8e57bfd6",
-            "type": "SetAttributes",
-            "branches": [
-                {
-                    "condition": "Success",
-                    "transition": "86ec3a71-fa97-4cb0-b03f-18249ad189cb"
-                },
-                {
-                    "condition": "Error",
-                    "transition": "35e4005e-ed2a-49eb-8960-c1ce7cbe611c"
-                }
-            ],
-            "parameters": [
-                {
-                    "name": "Attribute",
-                    "value": "en-US",
-                    "key": "languageCode",
-                    "namespace": null
-                }
-            ],
-            "metadata": {
-                "position": {
-                    "x": 248,
-                    "y": 154
-                }
-            }
-        },
-        {
-            "id": "86ec3a71-fa97-4cb0-b03f-18249ad189cb",
-            "type": "StartMediaStreaming",
-            "branches": [
-                {
-                    "condition": "Success",
-                    "transition": "af89b7be-14c3-40e7-a9ab-643748abe7ec"
-                },
-                {
-                    "condition": "Error",
-                    "transition": "af89b7be-14c3-40e7-a9ab-643748abe7ec"
-                }
-            ],
-            "parameters": [
-                {
-                    "name": "Track",
-                    "value": "FromCustomer"
-                },
-                {
-                    "name": "Track",
-                    "value": "ToCustomer"
-                },
-                {
-                    "name": "MediaStreamTypes",
-                    "value": "Audio"
-                }
-            ],
-            "metadata": {
-                "position": {
-                    "x": 451,
-                    "y": 15
-                },
-                "fromCustomer": true,
-                "toCustomer": true
-            }
         }
     ],
     "version": "1",
@@ -467,6 +467,6 @@
         "description": "Sample SCV Inbound",
         "type": "contactFlow",
         "status": "published",
-        "hash": "d20cb782d06b3e7ded4944ac86b474f6cd23c8d098c1a4d2d6c024a60b3034a1"
+        "hash": "b6ecea74fd1cfe9e9344245007a8555d8de5d4c3b458b7beb608df7f991c8f08"
     }
 }
