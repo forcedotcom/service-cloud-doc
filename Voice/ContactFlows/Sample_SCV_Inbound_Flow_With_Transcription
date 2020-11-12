@@ -359,7 +359,7 @@
             "parameters": [
                 {
                     "name": "Text",
-                    "value": "Some error occurred in executing Lambda. No voice call record created. Callback again.",
+                    "value": "Some error occurred in executing Lambda.",
                     "namespace": null
                 },
                 {
